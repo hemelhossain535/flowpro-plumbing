@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — We Got Your Message | FlowPro Plumbing</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* CONFIRMATION HERO */
+.confirm-section { background:var(--navy); padding:40px 0; position:relative; overflow:hidden; text-align:center; }
+.confirm-section::before { content:''; position:absolute; top:-30%; left:50%; transform:translateX(-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(46,125,94,0.2) 0%,transparent 65%); pointer-events:none; }
+.confirm-inner { position:relative; z-index:1; }
+.confirm-tick { width:80px; height:80px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:36px; margin:0 auto 24px; animation:pop 0.5s cubic-bezier(0.17,0.89,0.32,1.28); }
+@keyframes pop { 0%{transform:scale(0);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+.confirm-title { font-family:var(--font-d); font-weight:900; font-size:clamp(32px,5vw,52px); color:var(--white); margin-bottom:12px; line-height:1.05; }
+.confirm-title span { color:var(--orange); }
+.confirm-sub { font-size:17px; color:var(--muted); max-width:500px; margin:0 auto; line-height:1.65; }
+
+/* URGENCY CARDS */
+.ty-section { display:none; }
+.urgency-card { max-width:600px; margin:0 auto; background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); overflow:hidden; margin-top:44px; }
+.urgency-top { padding:28px; }
+.urgency-type { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:6px 14px; border-radius:100px; margin-bottom:16px; }
+.urgency-type.emergency { background:rgba(232,92,26,0.12); color:var(--orange); }
+.urgency-type.sameday { background:rgba(26,43,60,0.08); color:var(--navy); }
+.urgency-type.planned { background:rgba(46,125,94,0.12); color:var(--green); }
+.urgency-title { font-family:var(--font-d); font-weight:900; font-size:26px; color:var(--navy); margin-bottom:14px; }
+.timeline { display:flex; flex-direction:column; gap:0; }
+.tl-step { display:flex; gap:16px; position:relative; padding-bottom:20px; }
+.tl-step:last-child { padding-bottom:0; }
+.tl-step:not(:last-child)::before { content:''; position:absolute; left:17px; top:34px; bottom:0; width:2px; background:var(--border); }
+.tl-dot { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:white; flex-shrink:0; font-family:var(--font-d); }
+.tl-dot.done { background:var(--green); }
+.tl-dot.next { background:var(--orange); }
+.tl-dot.soon { background:var(--navy); }
+.tl-body {}
+.tl-title { font-weight:700; font-size:15px; color:var(--navy); margin-bottom:3px; }
+.tl-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+.tl-time { display:inline-block; font-size:11px; font-weight:700; color:var(--orange); background:rgba(232,92,26,0.1); border-radius:4px; padding:2px 8px; margin-top:4px; }
+.urgency-bottom { background:var(--off-white); padding:20px 28px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.urgency-cta-text { font-size:13px; font-weight:600; color:var(--body-text); }
+.urgency-cta-text strong { color:var(--navy); }
+
+/* WHILE YOU WAIT */
+.wait-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px; }
+.wait-card { background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); padding:26px; }
+.wait-card-title { font-family:var(--font-d); font-weight:800; font-size:20px; color:var(--navy); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+.wait-steps { display:flex; flex-direction:column; gap:14px; }
+.wait-step { display:flex; gap:12px; align-items:flex-start; }
+.wait-num { width:26px; height:26px; border-radius:50%; background:var(--orange); color:white; font-family:var(--font-d); font-weight:900; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.wait-body {}
+.wait-step-title { font-weight:700; font-size:14px; color:var(--navy); margin-bottom:2px; }
+.wait-step-desc { font-size:13px; color:var(--body-text); line-height:1.55; }
+
+/* SOCIAL PROOF */
+.social-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:40px; }
+.social-cta { background:var(--navy); border-radius:var(--r-lg); padding:28px; text-align:center; }
+.social-cta-title { font-family:var(--font-d); font-weight:800; font-size:20px; color:var(--white); margin-bottom:10px; }
+.social-cta-sub { font-size:13px; color:var(--muted); margin-bottom:20px; }
+.social-btns { display:flex; flex-direction:column; gap:8px; }
+.social-btn { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px; border-radius:var(--r); font-family:var(--font-b); font-size:14px; font-weight:600; transition:all 0.2s; }
+.social-btn.fb { background:#1877F2; color:white; }
+.social-btn.ig { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:white; }
+.social-btn:hover { opacity:0.9; transform:translateY(-2px); }
+.refer-card { background:var(--off-white); border-radius:var(--r-lg); border:1px solid var(--border); padding:28px; text-align:center; }
+.refer-amount { font-family:var(--font-d); font-weight:900; font-size:48px; color:var(--orange); margin:12px 0; }
+.refer-title { font-family:var(--font-d); font-weight:800; font-size:20px; color:var(--navy); margin-bottom:10px; }
+.refer-sub { font-size:13px; color:var(--muted); margin-bottom:20px; line-height:1.6; }
+
+@media(max-width:700px){
+  .wait-grid{grid-template-columns:1fr;}
+  .social-grid{grid-template-columns:1fr;}
+  .urgency-bottom{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER (simplified — no CTA needed) -->
+<header class="site-header">
+  <nav>
+    <div class="nav-main">
+      <a href="index.html" class="logo">Flow<span>Pro</span> Plumbing</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:5551234567" class="nav-phone"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span class="phone-text">(555) 123-4567</span></a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:5551234567" style="color:var(--orange);">📞 (555) 123-4567</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- CONFIRMATION -->
+<section class="confirm-section">
+  <div class="container confirm-inner">
+    <div class="confirm-tick">✓</div>
+    <h1 class="confirm-title">We Got Your Message</h1>
+    <p class="confirm-sub">Help is on the way. Here is exactly what happens next based on what you told us.</p>
+  </div>
+</section>
+
+<!-- EMERGENCY NEXT STEPS -->
+<section class="section ty-section" id="ty-emergency">
+  <div class="container">
+    <div class="urgency-card">
+      <div class="urgency-top">
+        <div class="urgency-type emergency">🚨 Emergency Response</div>
+        <div class="urgency-title">We Are Calling You Right Now</div>
+        <div class="timeline">
+          <div class="tl-step">
+            <div class="tl-dot done">✓</div>
+            <div class="tl-body">
+              <div class="tl-title">Message received</div>
+              <div class="tl-desc">We have your details and your job is flagged as an emergency.</div>
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot next">📞</div>
+            <div class="tl-body">
+              <div class="tl-title">We call you back</div>
+              <div class="tl-desc">Please keep your phone close. We will call within 5 minutes.</div>
+              <span class="tl-time">Within 5 minutes</span>
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">🚐</div>
+            <div class="tl-body">
+              <div class="tl-title">Plumber dispatched</div>
+              <div class="tl-desc">Your plumber is dispatched immediately on the call.</div>
+              <span class="tl-time">Immediately after call</span>
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">🔧</div>
+            <div class="tl-body">
+              <div class="tl-title">Plumber arrives and fixes it</div>
+              <div class="tl-desc">Written quote before we start. Fixed the same visit. Problem solved.</div>
+              <span class="tl-time">Within 60 minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="urgency-bottom">
+        <div class="urgency-cta-text">Phone not nearby? <strong>Call us now</strong> — we are ready.</div>
+        <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call (555) 123-4567</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAME DAY NEXT STEPS -->
+<section class="section ty-section" id="ty-sameday">
+  <div class="container">
+    <div class="urgency-card">
+      <div class="urgency-top">
+        <div class="urgency-type sameday">⚡ Same Day Service</div>
+        <div class="urgency-title">We Will Call You Within 15 Minutes</div>
+        <div class="timeline">
+          <div class="tl-step">
+            <div class="tl-dot done">✓</div>
+            <div class="tl-body"><div class="tl-title">Booking received</div><div class="tl-desc">Your same day request is in the queue. We are on it.</div></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot next">📞</div>
+            <div class="tl-body"><div class="tl-title">We call to confirm your slot</div><div class="tl-desc">We will call you within 15 minutes to confirm your arrival window for today.</div><span class="tl-time">Within 15 minutes</span></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">🚐</div>
+            <div class="tl-body"><div class="tl-title">Plumber arrives</div><div class="tl-desc">Your dedicated plumber arrives within the agreed window today.</div><span class="tl-time">Within 4 hours</span></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">✓</div>
+            <div class="tl-body"><div class="tl-title">Fixed today — guaranteed</div><div class="tl-desc">Written quote, approved by you, fixed same day. Problem solved.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="urgency-bottom">
+        <div class="urgency-cta-text">Can't wait? <strong>Call us now</strong> for immediate assistance.</div>
+        <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call (555) 123-4567</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANNED / QUOTE NEXT STEPS -->
+<section class="section ty-section" id="ty-quote">
+  <div class="container">
+    <div class="urgency-card">
+      <div class="urgency-top">
+        <div class="urgency-type planned">📅 Planned Service</div>
+        <div class="urgency-title">We Will Call You Within 2 Hours</div>
+        <div class="timeline">
+          <div class="tl-step">
+            <div class="tl-dot done">✓</div>
+            <div class="tl-body"><div class="tl-title">Request received</div><div class="tl-desc">We have all your details and a team member will review your job.</div></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot next">📞</div>
+            <div class="tl-body"><div class="tl-title">We call to discuss your job</div><div class="tl-desc">We will call within 2 hours to discuss your requirements and get the right plumber for you.</div><span class="tl-time">Within 2 hours</span></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">📅</div>
+            <div class="tl-body"><div class="tl-title">We book a time that suits you</div><div class="tl-desc">We schedule at your convenience — evenings and weekends available for planned jobs.</div></div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot soon">✓</div>
+            <div class="tl-body"><div class="tl-title">Fixed on your schedule</div><div class="tl-desc">Written quote on arrival, approved by you, fixed to our 12 month warranty standard.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="urgency-bottom">
+        <div class="urgency-cta-text">Changed your mind? <strong>Need it sooner?</strong> Just call us.</div>
+        <a href="tel:5551234567" class="btn btn-secondary" style="font-size:15px;padding:12px 24px;">📞 Call (555) 123-4567</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHILE YOU WAIT -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 44px;">
+      <span class="eyebrow">While You Wait</span>
+      <h2 class="section-title">3 Things You Can Do Right Now</h2>
+      <p class="section-sub" style="margin:0 auto;">This helps our plumber arrive prepared and limits any further damage.</p>
+    </div>
+
+    <div class="wait-grid">
+      <div class="wait-card fade-up">
+        <div class="wait-card-title">🚨 If You Have an Emergency</div>
+        <div class="wait-steps">
+          <div class="wait-step">
+            <div class="wait-num">1</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Find and turn off your main water stopcock</div>
+              <div class="wait-step-desc">This limits water damage while we are on the way. It is usually under the kitchen sink or where the water pipe enters your home.</div>
+            </div>
+          </div>
+          <div class="wait-step">
+            <div class="wait-num">2</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Take photos of the problem</div>
+              <div class="wait-step-desc">Photos help our plumber arrive prepared with the right parts, which means we fix it faster in a single visit.</div>
+            </div>
+          </div>
+          <div class="wait-step">
+            <div class="wait-num">3</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Move valuables away from the affected area</div>
+              <div class="wait-step-desc">Protect anything important from potential water damage while we are on the way to you.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wait-card fade-up">
+        <div class="wait-card-title">📋 What to Have Ready for Our Visit</div>
+        <div class="wait-steps">
+          <div class="wait-step">
+            <div class="wait-num">✓</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Know where your main water stopcock is</div>
+              <div class="wait-step-desc">Our plumber may need to turn this off at the start of the job.</div>
+            </div>
+          </div>
+          <div class="wait-step">
+            <div class="wait-num">✓</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Note when the problem started</div>
+              <div class="wait-step-desc">And whether anything changed recently — new appliance, recent work, unusual sounds.</div>
+            </div>
+          </div>
+          <div class="wait-step">
+            <div class="wait-num">✓</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Clear access to the affected area</div>
+              <div class="wait-step-desc">Move anything blocking access so we can get to work immediately on arrival.</div>
+            </div>
+          </div>
+          <div class="wait-step">
+            <div class="wait-num">✓</div>
+            <div class="wait-body">
+              <div class="wait-step-title">Have your preferred payment method ready</div>
+              <div class="wait-step-desc">We accept cash, card and bank transfer. Payment is after the job — when you are happy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF REINFORCEMENT -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <h2 class="section-title">Here Is What Happened for Other Springfield Homeowners</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:18px;margin:40px 0;">
+      <div class="testi-mini fade-up">
+        <div class="testi-mini-stars">★★★★★</div>
+        <p class="testi-mini-text">"From the moment I submitted the form, the problem fixed in under 3 hours. Incredible service — they called me back in under 10 minutes."</p>
+        <div class="testi-mini-author">— Paul T, Springfield</div>
+      </div>
+      <div class="testi-mini fade-up">
+        <div class="testi-mini-stars">★★★★★</div>
+        <p class="testi-mini-text">"They called me back in 10 minutes, plumber arrived in 50, price was exactly what they quoted. Will never use anyone else."</p>
+        <div class="testi-mini-author">— Emma R, Springfield</div>
+      </div>
+      <div class="testi-mini fade-up">
+        <div class="testi-mini-stars">★★★★★</div>
+        <p class="testi-mini-text">"Called at 10pm on a Tuesday. Real person answered. Fixed and cleaned up by midnight. Exactly what they quoted. Perfect."</p>
+        <div class="testi-mini-author">— Sandra M, Springfield</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL + REFERRAL -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="social-grid">
+      <div class="social-cta">
+        <div class="social-cta-title">Follow Us for Free Plumbing Tips</div>
+        <div class="social-cta-sub">We post free tips every week to help you avoid plumbing problems before they become emergencies.</div>
+        <div class="social-btns">
+          <a href="#" class="social-btn fb">📘 Follow on Facebook</a>
+          <a href="#" class="social-btn ig">📸 Follow on Instagram</a>
+        </div>
+      </div>
+      <div class="refer-card">
+        <div class="refer-title">Know a Neighbor Who Need a Plumber They Can Trust?</div>
+        <div class="refer-amount">$50 Off</div>
+        <div class="refer-sub">Send them our way. If they use us you get <strong>$50 off your next service</strong>. No limit on how many neighbors you can refer.</div>
+                <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Share (555) 123-4567</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Flow<span>Pro</span> Plumbing</div>
+        <p class="footer-desc">Your trusted local plumber in Springfield. Licensed, committed to fixing it right the first time.</p>
+        <div class="footer-contact">
+          <span>📞 <a href="tel:5551234567">(555) 123-4567</a></span>
+          <span>📍 123 Main Street, Springfield</span>
+          <span>🕐 Available 24/7 for Emergencies</span>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Services</div><div class="footer-links"><a href="services.html">Emergency Plumbing</a><a href="services.html">Drain Cleaning</a><a href="services.html">Hot Water Repair</a><a href="services.html">Pipe Repair</a><a href="services.html">Gas Fitting</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div></div>
+      <div><div class="footer-col-title">Service Areas</div><div class="footer-links"><a href="#">Springfield</a><a href="#">Westfield</a><a href="#">Northbrook</a><a href="#">Riverside</a><a href="#">Lakewood</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025 FlowPro Plumbing. All Rights Reserved.</div>
+      <div class="footer-badges"><div class="badge">✓ Licensed</div><div class="badge">✓ 15 Years Experience</div></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

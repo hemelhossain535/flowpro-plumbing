@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plumbing Prices Springfield | FlowPro — Upfront Honest Pricing</title>
+<meta name="description" content="Transparent plumbing pricing in Springfield. See our starting prices, service packages, and price promise. No hidden fees, ever. Call (555) 123-4567.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* PACKAGES */
+.packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px; }
+.package-card { background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); overflow:hidden; transition:all 0.3s; display:flex; flex-direction:column; }
+.package-card.featured { border:2px solid var(--orange); box-shadow:0 0 0 4px rgba(232,92,26,0.1); }
+.package-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+.package-top { padding:28px 26px 0; flex:1; }
+.pkg-badge { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:4px 12px; border-radius:100px; margin-bottom:14px; }
+.pkg-badge.popular { background:var(--orange); color:white; }
+.pkg-badge.standard { background:var(--off-white); color:var(--navy); }
+.pkg-badge.urgent { background:rgba(232,92,26,0.12); color:var(--orange); }
+.pkg-title { font-family:var(--font-d); font-weight:900; font-size:26px; color:var(--navy); margin-bottom:4px; }
+.pkg-sub { font-size:13px; color:var(--muted); margin-bottom:20px; }
+.pkg-price { display:flex; align-items:baseline; gap:6px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+.pkg-from { font-size:12px; font-weight:600; color:var(--muted); }
+.pkg-amount { font-family:var(--font-d); font-weight:900; font-size:44px; color:var(--navy); line-height:1; }
+.pkg-amount.featured-price { color:var(--orange); }
+.pkg-unit { font-size:14px; color:var(--muted); }
+.pkg-features { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.pkg-feat { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--body-text); }
+.pkg-feat-icon { width:18px; height:18px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:9px; flex-shrink:0; }
+.package-bottom { padding:20px 26px; background:var(--off-white); border-top:1px solid var(--border); }
+.package-bottom.featured-bottom { background:var(--orange); }
+.package-bottom .btn { width:100%; justify-content:center; font-size:15px; padding:13px; }
+.package-note { font-size:11px; color:var(--muted); text-align:center; margin-top:8px; }
+.package-note.light { color:rgba(255,255,255,0.7); }
+
+/* PRICE TABLE */
+.price-table-wrap { background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); overflow:hidden; box-shadow:var(--shadow-sm); }
+.pt-header { background:var(--navy); padding:18px 28px; display:grid; grid-template-columns:1fr 160px; gap:16px; }
+.pt-h { font-family:var(--font-d); font-weight:800; font-size:15px; }
+.pt-h.label { color:var(--muted); }
+.pt-h.price { color:var(--orange); text-align:right; }
+.pt-row { display:grid; grid-template-columns:1fr 160px; padding:15px 28px; gap:16px; border-bottom:1px solid var(--border); align-items:center; transition:background 0.15s; }
+.pt-row:last-child { border-bottom:none; }
+.pt-row:hover { background:var(--off-white); }
+.pt-service { font-size:14px; font-weight:600; color:var(--navy); }
+.pt-service-sub { font-size:12px; color:var(--muted); font-weight:400; margin-top:2px; }
+.pt-price { font-family:var(--font-d); font-weight:800; font-size:18px; color:var(--orange); text-align:right; }
+.pt-note { padding:16px 28px; background:var(--off-white); border-top:1px solid var(--border); font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* VALUE CALC */
+.value-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:44px; }
+.value-box { border-radius:var(--r-lg); padding:28px; }
+.value-box.bad { background:#fff5f3; border:1.5px solid rgba(232,92,26,0.25); }
+.value-box.good { background:#f0faf5; border:1.5px solid rgba(46,125,94,0.25); }
+.vb-title { font-family:var(--font-d); font-weight:900; font-size:20px; margin-bottom:20px; }
+.vb-title.bad { color:var(--orange); }
+.vb-title.good { color:var(--green); }
+.vb-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.06); font-size:14px; }
+.vb-row:last-child { border-bottom:none; font-weight:700; font-size:15px; padding-top:14px; }
+.vb-label { color:var(--body-text); }
+.vb-val { font-weight:700; }
+.vb-val.red { color:var(--orange); }
+.vb-val.green { color:var(--green); }
+
+/* PROMISE */
+.promise-box { background:var(--navy); border-radius:var(--r-lg); padding:40px; text-align:center; }
+.promise-icon { font-size:48px; margin-bottom:16px; }
+.promise-title { font-family:var(--font-d); font-weight:900; font-size:30px; color:var(--white); margin-bottom:24px; }
+.promise-list { display:flex; flex-direction:column; gap:14px; max-width:500px; margin:0 auto 28px; text-align:left; }
+.promise-item { display:flex; align-items:flex-start; gap:12px; }
+.promise-check { width:22px; height:22px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:11px; flex-shrink:0; margin-top:1px; }
+.promise-text { font-size:14px; line-height:1.65; color:rgba(255,255,255,0.85); }
+
+.cta-section { background:var(--navy); position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:-30%; right:-10%; width:600px; height:600px; background:radial-gradient(circle,rgba(232,92,26,0.15) 0%,transparent 65%); pointer-events:none; }
+.cta-inner { text-align:center; position:relative; z-index:1; }
+
+@media(max-width:900px){ .packages-grid{grid-template-columns:1fr;} .value-grid{grid-template-columns:1fr;} .pt-header,.pt-row{grid-template-columns:1fr 120px;} }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">🚨 Plumbing emergency? A real person answer right now — <a href="tel:5551234567">(555) 123-4567</a></div>
+  <nav>
+    <div class="nav-main">
+      <a href="index.html" class="logo">Flow<span>Pro</span> Plumbing</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:5551234567" class="nav-phone"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span class="phone-text">(555) 123-4567</span></a>
+        <a href="contact.html" class="btn btn-primary" style="font-size:14px;padding:10px 18px;">Book Now</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:5551234567" style="color:var(--orange);">📞 (555) 123-4567</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Pricing</div>
+      <h1>Know Exactly What You Pay Before We Touch Anything</h1>
+      <p>No hidden fees. No bill shock. No taking advantage of your situation. Just honest pricing every single time — in writing before we start.</p>
+      <div class="hero-btns">
+        <a href="tel:5551234567" class="btn btn-primary">🚨 Get a Plumber in 60 Min</a>
+        <a href="#pricing-table" class="btn btn-secondary">📊 See Our Pricing Below</a>
+      </div>
+      <div class="review-strip">
+        <div class="review-faces">
+          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+        </div>
+        <div>
+          <div class="review-text">200+ five-star reviews on Google</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="./Assets/Images/pricing page hero image.jpg" alt="Relieved homeowner enjoying their home with peace of mind" class="page-hero-img">
+    </div>
+  </div>
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="tb-item">⏱️ We Arrive in 60 Minutes</div>
+        <div class="tb-item">💰 Upfront Pricing — No Surprises</div>
+        <div class="tb-item">🔧 Fixed Right the First Time</div>
+        <div class="tb-item">🛡️ 12-Month Warranty on All Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Service Packages</span>
+      <h2 class="section-title">Our Plumbing Service Packages</h2>
+      <p class="section-sub" style="margin:0 auto;">Not sure which one you need? Call us — we will tell you in 60 seconds. <a href="tel:5551234567" style="color:var(--orange);font-weight:700;">(555) 123-4567</a></p>
+    </div>
+
+    <div class="packages-grid">
+      <div class="package-card fade-up">
+        <div class="package-top">
+          <div class="pkg-badge standard">Standard</div>
+          <div class="pkg-title">Scheduled Service</div>
+          <div class="pkg-sub">For planned, non-urgent plumbing jobs</div>
+          <div class="pkg-price">
+            <span class="pkg-from">From</span>
+            <span class="pkg-amount">$89</span>
+          </div>
+          <div class="pkg-features">
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Scheduled appointment time slot</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Next available booking</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Full diagnosis included</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Written quote before we start</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> 12 month warranty on all work</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Full clean up after job</div>
+          </div>
+        </div>
+        <div class="package-bottom">
+          <a href="contact.html" class="btn btn-secondary">Book Standard Service</a>
+          <p class="package-note">No call-out fee for standard bookings</p>
+        </div>
+      </div>
+
+      <div class="package-card featured fade-up">
+        <div class="package-top">
+          <div class="pkg-badge popular">⭐ Most Popular</div>
+          <div class="pkg-title">Same Day Priority</div>
+          <div class="pkg-sub">For urgent but non-emergency needs</div>
+          <div class="pkg-price">
+            <span class="pkg-from">From</span>
+            <span class="pkg-amount featured-price">$149</span>
+          </div>
+          <div class="pkg-features">
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Arrival within 4 hours guaranteed</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Priority dispatch today</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Dedicated plumber for your job</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Full diagnosis included</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Written quote before we start</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> 12 month warranty on all work</div>
+          </div>
+        </div>
+        <div class="package-bottom featured-bottom">
+          <a href="contact.html" class="btn btn-primary" style="background:white;color:var(--orange);">Book Same Day Service</a>
+          <p class="package-note light">Fixed within today — guaranteed</p>
+        </div>
+      </div>
+
+      <div class="package-card fade-up">
+        <div class="package-top">
+          <div class="pkg-badge urgent">Emergency 24/7</div>
+          <div class="pkg-title">Emergency Response</div>
+          <div class="pkg-sub">For plumbing emergencies day or night</div>
+          <div class="pkg-price">
+            <span class="pkg-from">From</span>
+            <span class="pkg-amount">$199</span>
+          </div>
+          <div class="pkg-features">
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> 60 minute arrival guarantee</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> 24/7 including weekends & holidays</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Real person answers immediately</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Fully stocked emergency van</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> Written quote before we start</div>
+            <div class="pkg-feat"><span class="checkmark sm">✓</span> 12 month warranty on all work</div>
+          </div>
+        </div>
+        <div class="package-bottom">
+          <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — Emergency Line</a>
+          <p class="package-note">Callout fee clearly explained before dispatch</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE TABLE -->
+<section class="section section-alt" id="pricing-table">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Common Job Pricing</span>
+      <h2 class="section-title">Common Job Pricing Guide</h2>
+      <p class="section-sub" style="margin:0 auto;">Starting prices for our most common jobs. Exact price confirmed in writing before we start. Final price always depends on your specific job.</p>
+    </div>
+
+    <div style="max-width:680px;margin:40px auto 0;" class="price-table-wrap">
+      <div class="pt-header">
+        <div class="pt-h label">Service</div>
+        <div class="pt-h price">Starting From</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Blocked drain clear</div><div class="pt-service-sub">Single drain, standard blockage</div></div>
+        <div class="pt-price">$149</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Leaking tap repair</div><div class="pt-service-sub">Includes new washers and fittings</div></div>
+        <div class="pt-price">$89</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Toilet repair</div><div class="pt-service-sub">Blockage, cistern, or seal</div></div>
+        <div class="pt-price">$120</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Hot water repair</div><div class="pt-service-sub">Diagnosis and standard repair</div></div>
+        <div class="pt-price">$179</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Pipe repair</div><div class="pt-service-sub">Single pipe section</div></div>
+        <div class="pt-price">$199</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Gas fitting</div><div class="pt-service-sub">Appliance connection or repair</div></div>
+        <div class="pt-price">$220</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Emergency callout</div><div class="pt-service-sub">After hours and weekends</div></div>
+        <div class="pt-price">$199</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">CCTV drain inspection</div><div class="pt-service-sub">Full camera inspection with report</div></div>
+        <div class="pt-price">$280</div>
+      </div>
+      <div class="pt-row">
+        <div><div class="pt-service">Bathroom renovation</div><div class="pt-service-sub">Full bathroom makeover</div></div>
+        <div class="pt-price">From $4,500</div>
+      </div>
+      <div class="pt-note">These are starting prices only. Your exact price depends on your specific job and will be confirmed in writing before we start any work. What we quote is what you pay — not a cent more.</div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <a href="contact.html" class="btn btn-primary">Get My Exact Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="eyebrow">Why Our Pricing Is Fair</span>
+      <h2 class="section-title">We Are Not the Cheapest Plumber in Springfield. Here Is Why That Is Good News For You.</h2>
+      <p class="section-sub" style="margin:14px auto 0;">Cheap plumbers cut corners. They use inferior parts. They patch problems instead of fixing them. You pay twice when the problem comes back.</p>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-box bad fade-up">
+        <div class="vb-title bad">❌ The Real Cost of Cheap Plumbing</div>
+        <div class="vb-row"><span class="vb-label">Cheap fix — first call</span><span class="vb-val red">$150</span></div>
+        <div class="vb-row"><span class="vb-label">Problem returns? Yes.</span><span class="vb-val red">Mostly</span></div>
+        <div class="vb-row"><span class="vb-label">Second plumber call</span><span class="vb-val red">$150</span></div>
+        <div class="vb-row"><span class="vb-label">Water damage from delay</span><span class="vb-val red">$500+</span></div>
+        <div class="vb-row"><span class="vb-label">Days of stress and disruption</span><span class="vb-val red">Priceless</span></div>
+        <div class="vb-row"><span class="vb-label">Total real cost</span><span class="vb-val red">$800+</span></div>
+      </div>
+      <div class="value-box good fade-up">
+        <div class="vb-title good">✓ The FlowPro Way</div>
+        <div class="vb-row"><span class="vb-label">Fixed properly the first time</span><span class="vb-val green">From $149</span></div>
+        <div class="vb-row"><span class="vb-label">12 month warranty included</span><span class="vb-val green">Free</span></div>
+        <div class="vb-row"><span class="vb-label">Problem returns?</span><span class="vb-val green">We fix free</span></div>
+        <div class="vb-row"><span class="vb-label">Water damage risk</span><span class="vb-val green">Eliminated</span></div>
+        <div class="vb-row"><span class="vb-label">Stress and disruption</span><span class="vb-val green">Zero</span></div>
+        <div class="vb-row"><span class="vb-label">Total real cost</span><span class="vb-val green">From $149</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;font-family:var(--font-d);font-weight:900;font-size:22px;color:var(--navy);">
+      Fixed right the first time is always cheaper than fixed twice badly.
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="max-width:640px;margin:0 auto;">
+      <div class="promise-box fade-up">
+        <div class="promise-icon">🛡️</div>
+        <div class="promise-title">Our Price Promise to You</div>
+        <div class="promise-list">
+          <div class="promise-item"><span class="checkmark sm">✓</span><span class="promise-text">We give you an exact written quote before we start any work — no exceptions</span></div>
+          <div class="promise-item"><span class="checkmark sm">✓</span><span class="promise-text">The price on your quote is the price on your final bill. Not a cent more. Ever.</span></div>
+          <div class="promise-item"><span class="checkmark sm">✓</span><span class="promise-text">If we find additional problems we tell you and quote separately before doing any extra work</span></div>
+          <div class="promise-item"><span class="checkmark sm">✓</span><span class="promise-text">12 month warranty on all work — if it fails we fix it completely free</span></div>
+          <div class="promise-item"><span class="checkmark sm">✓</span><span class="promise-text">If we cannot fix it you do not pay. Simple.</span></div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="font-size:16px;padding:14px 32px;">Get My exact Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ MONEY -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Money Questions</span>
+      <h2 class="section-title">Pricing Questions Homeowners Ask Us</h2>
+    </div>
+    <div style="max-width:760px;margin:40px auto 0;">
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Do I pay before or after the job?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">After. We complete the work, you are happy, then you pay. We send a proper invoice for every job.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Is there a call-out fee?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">Standard scheduled service has no call-out fee. Emergency and after-hours callouts have a callout fee which is clearly explained before we send anyone out and included in your written quote. No surprises.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What if the job costs more than quoted?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">It does not. Your quote is your price. If we discover additional problems while working, we stop, tell you, and quote separately before doing any extra work. You always decide before we proceed.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Is there GST or tax on top of the price?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">All prices quoted are the full price you pay. What we quote is what you pay. We include all applicable taxes in our quote so there are absolutely no surprises at the end.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow">Get a Fair Honest Quote</span>
+      <h2 class="section-title light">Ready to Get an Exact Quote<br>From a Plumber You Can Trust?</h2>
+      <div class="cta-btns">
+        <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — (555) 123-4567</a>
+        <a href="contact.html" class="btn btn-secondary">📅 Book Online Now</a>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <div class="check-item"><span class="checkmark sm">✓</span> Exact Quote Before We Start</div>
+        <div class="check-item"><span class="checkmark sm">✓</span> Price Never Changes After Quote</div>
+        <div class="check-item"><span class="checkmark sm">✓</span> 12 Month Warranty on All Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Flow<span>Pro</span> Plumbing</div>
+        <p class="footer-desc">Your trusted local plumber in Springfield. Licensed, committed to fixing it right the first time.</p>
+        <div class="footer-contact">
+          <span>📞 <a href="tel:5551234567">(555) 123-4567</a></span>
+          <span>📍 123 Main Street, Springfield</span>
+          <span>🕐 Available 24/7 for Emergencies</span>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Services</div><div class="footer-links"><a href="services.html">Emergency Plumbing</a><a href="services.html">Drain Cleaning</a><a href="services.html">Hot Water Repair</a><a href="services.html">Pipe Repair</a><a href="services.html">Gas Fitting</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div></div>
+      <div><div class="footer-col-title">Service Areas</div><div class="footer-links"><a href="#">Springfield</a><a href="#">Westfield</a><a href="#">Northbrook</a><a href="#">Riverside</a><a href="#">Lakewood</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025 FlowPro Plumbing. All Rights Reserved.</div>
+      <div class="footer-badges"><div class="badge">✓ Licensed</div><div class="badge">✓ 15 Years Experience</div></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

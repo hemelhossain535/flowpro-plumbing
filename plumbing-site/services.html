@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plumbing Services Springfield | FlowPro Plumbing</title>
+<meta name="description" content="Emergency plumbing, drain cleaning, hot water, pipe repair, gas fitting and more in Springfield. 60 min arrival guarantee. Call FlowPro (555) 123-4567.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px; }
+.service-card { background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); overflow:hidden; transition:all 0.3s; }
+.service-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+.service-card-top { padding:28px 26px 20px; }
+.sc-icon { width:54px; height:54px; border-radius:var(--r); display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 16px; }
+.sc-badge { display:block; width:fit-content; margin:0 auto 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:3px 10px; border-radius:100px; }
+.sc-badge.emergency { background:rgba(232,92,26,0.12); color:var(--orange); }
+.sc-badge.standard { background:rgba(26,43,60,0.08); color:var(--navy); }
+.sc-title { font-family:var(--font-d); font-weight:800; font-size:22px; color:var(--navy); margin-bottom:10px; }
+.sc-desc { font-size:13px; line-height:1.65; color:var(--body-text); margin-bottom:16px; }
+.sc-features { display:flex; flex-direction:column; gap:7px; margin-bottom:20px; }
+.sc-feat { display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--body-text); }
+.sc-feat-dot { width:14px; height:14px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:8px; flex-shrink:0; }
+.service-card-bottom { background:var(--off-white); padding:16px 26px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--border); }
+.sc-warranty { font-size:11px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:0.06em; }
+.sc-link { font-family:var(--font-d); font-weight:800; font-size:14px; color:var(--orange); letter-spacing:0.04em; text-transform:uppercase; }
+.sc-link:hover { text-decoration:underline; }
+
+.how-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+.how-img { background:linear-gradient(135deg,var(--navy-light) 0%,var(--navy) 100%); border-radius:var(--r-lg); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:80px; opacity:.6; }
+.how-steps { display:flex; flex-direction:column; gap:20px; }
+.how-step { display:flex; gap:16px; align-items:flex-start; }
+.how-step-num { width:36px; height:36px; border-radius:50%; background:var(--orange); color:white; font-family:var(--font-d); font-weight:900; font-size:17px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.how-step-title { font-family:var(--font-d); font-weight:800; font-size:18px; color:var(--navy); margin-bottom:4px; }
+.how-step-body { font-size:13px; line-height:1.6; color:var(--body-text); }
+
+.area-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:32px; }
+.area-pill { background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:12px 16px; text-align:center; font-size:14px; font-weight:600; color:var(--navy); transition:all .2s; }
+.area-pill:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+
+.cta-section { background:var(--navy); position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:-30%; right:-10%; width:600px; height:600px; background:radial-gradient(circle,rgba(232,92,26,0.15) 0%,transparent 65%); pointer-events:none; }
+.cta-inner { text-align:center; position:relative; z-index:1; }
+
+@media(max-width:900px){ .services-grid{grid-template-columns:1fr 1fr;} .how-grid{grid-template-columns:1fr;} .area-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:600px){ .services-grid{grid-template-columns:1fr;} .area-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">🚨 Plumbing emergency? A real person answer right now — <a href="tel:5551234567">(555) 123-4567</a></div>
+  <nav>
+    <div class="nav-main">
+      <a href="index.html" class="logo">Flow<span>Pro</span> Plumbing</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:5551234567" class="nav-phone"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span class="phone-text">(555) 123-4567</span></a>
+        <a href="contact.html" class="btn btn-primary" style="font-size:14px;padding:10px 18px;">Book Now</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:5551234567" style="color:var(--orange);">📞 (555) 123-4567</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Services</div>
+      <h1>Every Plumbing Problem<br>In Springfield —We Handle It</h1>
+      <p>From emergency burst pipes at 3am to planned bathroom renovations. Same promises, same quality no matter the job size.</p>
+      <div class="hero-btns">
+        <a href="tel:5551234567" class="btn btn-primary">🚨 Get a Plumber in 60 Min</a>
+        <a href="contact.html" class="btn btn-secondary">📅 Schedule a Visit</a>
+      </div>
+      <div class="review-strip">
+        <div class="review-faces">
+          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+        </div>
+        <div>
+          <div class="review-text">200+ five-star reviews on Google</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="./Assets/Images/home hero.jpg" alt="High-quality modern kitchen plumbing result" class="page-hero-img">
+    </div>
+  </div>
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="tb-item">⏱️ We Arrive in 60 Minutes</div>
+        <div class="tb-item">💰 Upfront Pricing — No Surprises</div>
+        <div class="tb-item">🔧 Fixed Right the First Time</div>
+        <div class="tb-item">🛡️ 12-Month Warranty on All Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL SERVICES -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 44px;">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="section-title">We Handle Every Plumbing Problem in Springfield</h2>
+      <p class="section-sub" style="margin:0 auto;">All services include an upfront written quote, 12 month warranty, and our promise to fix it properly the first time.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(232,92,26,0.1);">🚨</div>
+          <div class="sc-badge emergency">Emergency 24/7</div>
+          <div class="sc-title">Emergency Plumbing</div>
+          <p class="sc-desc">We answer every call, arrive in 60 minutes, any time day or night. Our emergency van is fully stocked to fix it in a single visit.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> 24/7 response — real person answers</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> 60 minute arrival guarantee</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fully stocked emergency van</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Upfront pricing before we start</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(26,43,60,0.08);">🚿</div>
+          <div class="sc-badge standard">Same Day Available</div>
+          <div class="sc-title">Drain Cleaning</div>
+          <p class="sc-desc">Blocked drains cleared same day. We find the real cause — not just unblock it — so it does not block again in a few weeks.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Same day service available</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> CCTV camera inspection included</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> No-fix no-pay guarantee</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> 90 day drain guarantee</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 90 Day Guarantee</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(46,125,94,0.1);">🔥</div>
+          <div class="sc-badge standard">All Brands</div>
+          <div class="sc-title">Hot Water Repair</div>
+          <p class="sc-desc">No hot water? We repair and replace all hot water systems — gas, electric and heat pump. Most repairs done in a single visit.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> All brands and systems</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fast same-day repair</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Replacement if needed</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Energy efficient options</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(232,92,26,0.1);">🚽</div>
+          <div class="sc-badge emergency">Fast Response</div>
+          <div class="sc-title">Blocked Toilet</div>
+          <p class="sc-desc">Blocked or overflowing toilet fixed fast. We carry the right equipment to clear any blockage without damaging your toilet or pipes.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> 60 minute arrival guarantee</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Full clean up after job</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Identify root cause</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> High-pressure jetting</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(26,43,60,0.08);">🛠️</div>
+          <div class="sc-badge standard">All Pipe Types</div>
+          <div class="sc-title">Pipe Repair</div>
+          <p class="sc-desc">Burst pipes, leaking pipes, corroded pipes — we repair all types and materials. We stop the damage fast and fix it properly.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Water damage stopped fast</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> All pipe types and materials</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Minimal disruption</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Long-term solution</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(46,125,94,0.1);">🔧</div>
+          <div class="sc-badge standard">Leaking Taps</div>
+          <div class="sc-title">Leaking Tap Repair</div>
+          <p class="sc-desc">A dripping tap wastes thousands of litres and adds to your water bill. We fix it fast with quality parts that last — not cheap washers.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> All tap types repaired</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Quality parts only</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> New taps supplied and fitted</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fast same-day service</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(232,92,26,0.1);">🔍</div>
+          <div class="sc-badge standard">Non-Invasive</div>
+          <div class="sc-title">Water Leak Detection</div>
+          <p class="sc-desc">Hidden leaks cause massive damage before you even see them. We use advanced technology to find the exact leak location without tearing walls apart.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Non-invasive technology</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Exact location found</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Minimal damage to property</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fix on same visit</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(26,43,60,0.08);">⛽</div>
+          <div class="sc-badge standard">Licensed Gas Fitter</div>
+          <div class="sc-title">Gas Fitting</div>
+          <p class="sc-desc">Licensed gas fitter for all gas appliance installations, repairs, and leak testing. Safety is never something we cut corners on.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fully licensed gas fitter</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> All appliances installed</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Gas leak testing</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Compliance certificates issued</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Book Now →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <div class="sc-icon" style="background:rgba(46,125,94,0.1);">🛁</div>
+          <div class="sc-badge standard">Planned Works</div>
+          <div class="sc-title">Bathroom Renovation</div>
+          <p class="sc-desc">Complete bathroom makeovers from full design to installation. Same promises that apply to our repairs apply to every renovation job.</p>
+          <div class="sc-features">
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Full design service</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fixtures supplied and installed</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> On time, on budget</div>
+            <div class="sc-feat"><span class="checkmark sm">✓</span> Fixed price guarantee</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <span class="sc-warranty">🛡️ 12 Month Warranty</span>
+          <a href="contact.html" class="sc-link">Get a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="how-grid">
+      <div class="how-img">🔧</div>
+      <div>
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-title">Simple From Start to Finish</h2>
+        <div class="how-steps">
+          <div class="how-step"><div class="how-step-num">1</div><div><div class="how-step-title">You Call or Book Online</div><p class="how-step-body">Tell us what is happening. We listen, ask the right questions, and send someone immediately or at a time that suits you.</p></div></div>
+          <div class="how-step"><div class="how-step-num">2</div><div><div class="how-step-title">We Arrive and Diagnose</div><p class="how-step-body">We arrive in uniform, identify the real problem, and give you an exact written quote before touching anything.</p></div></div>
+          <div class="how-step"><div class="how-step-num">3</div><div><div class="how-step-title">You Approve — We Fix</div><p class="how-step-body">You approve the price, we fix it properly, clean up completely, and leave your home exactly as we found it.</p></div></div>
+          <div class="how-step"><div class="how-step-num">4</div><div><div class="how-step-title">12 Month Warranty</div><p class="how-step-body">Every job is backed by our 12 month warranty. If it fails we come back and fix it completely free. No questions asked.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Where We Work</span>
+      <h2 class="section-title">Areas We Cover in Springfield</h2>
+      <p class="section-sub" style="margin:0 auto 0;">Not sure if we cover your area? Call us — we will tell you in 30 seconds.</p>
+    </div>
+    <div class="area-grid">
+      <div class="area-pill">Springfield</div>
+      <div class="area-pill">Westfield</div>
+      <div class="area-pill">Northbrook</div>
+      <div class="area-pill">Riverside</div>
+      <div class="area-pill">Lakewood</div>
+      <div class="area-pill">Oak Park</div>
+      <div class="area-pill">Greendale</div>
+      <div class="area-pill">Orland Park</div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="tel:5551234567" class="btn btn-secondary">📞 Call to Check Your Area</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow">Get Help Today</span>
+      <h2 class="section-title light">Need a Plumber Today?</h2>
+      <p class="section-sub light" style="margin:14px auto;text-align:center;">Whether it is an emergency right now or a job you want to plan — we are ready.</p>
+      <div class="cta-btns">
+        <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — (555) 123-4567</a>
+        <a href="contact.html" class="btn btn-secondary">📅 Book Online</a>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;font-weight:600;color:var(--muted);">
+        <span style="color:#FFB800;letter-spacing:2px;font-size:16px;">★★★★★</span>
+        Rated 5 Stars by 200+ Homeowners in Springfield
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Flow<span>Pro</span> Plumbing</div>
+        <p class="footer-desc">Your trusted local plumber in Springfield. Licensed, committed to fixing it right the first time.</p>
+        <div class="footer-contact">
+          <span>📞 <a href="tel:5551234567">(555) 123-4567</a></span>
+          <span>📍 123 Main Street, Springfield</span>
+          <span>🕐 Available 24/7 for Emergencies</span>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Services</div><div class="footer-links"><a href="services.html">Emergency Plumbing</a><a href="services.html">Drain Cleaning</a><a href="services.html">Hot Water Repair</a><a href="services.html">Pipe Repair</a><a href="services.html">Gas Fitting</a><a href="services.html">Bathroom Renovation</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div></div>
+      <div><div class="footer-col-title">Service Areas</div><div class="footer-links"><a href="#">Springfield</a><a href="#">Westfield</a><a href="#">Northbrook</a><a href="#">Riverside</a><a href="#">Lakewood</a><a href="#">Oak Park</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025 FlowPro Plumbing. All Rights Reserved.</div>
+      <div class="footer-badges"><div class="badge">✓ Licensed</div><div class="badge">✓ 15 Years Experience</div></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

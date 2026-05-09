@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowPro Plumbing | Springfield's Most Trusted Plumber — 60 Min Arrival</title>
+<meta name="description" content="Springfield's most trusted plumber. 60 minute arrival guarantee, upfront pricing, 12 month warranty. Available 24/7 for emergencies. Call (555) 123-4567.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== HERO ===== */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-40%; right:-15%; width:700px; height:700px; background:radial-gradient(circle,rgba(232,92,26,0.12) 0%,transparent 65%); pointer-events:none; }
+.hero::after { content:''; position:absolute; bottom:-20%; left:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(46,125,94,0.08) 0%,transparent 65%); pointer-events:none; }
+.hero-content { display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; padding:50px 0 60px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(232,92,26,0.15); border:1px solid rgba(232,92,26,0.3); border-radius:100px; padding:6px 16px; margin-bottom:20px; }
+.hero-badge span { font-size:12px; font-weight:600; color:var(--orange); letter-spacing:0.06em; text-transform:uppercase; }
+.hero-h1 { font-family:var(--font-d); font-weight:900; font-size:clamp(40px,5.5vw,62px); line-height:1.0; color:var(--white); margin-bottom:20px; letter-spacing:-0.01em; }
+.hero-h1 .accent { color:var(--orange); }
+.hero-sub { font-size:17px; line-height:1.7; color:var(--muted); margin-bottom:32px; max-width:440px; }
+.hero-img { width:100%; aspect-ratio: 1/1; border-radius:var(--r-lg); object-fit:cover; box-shadow:var(--shadow-lg); display: block; }
+.hero-trust { display:flex; flex-wrap:wrap; gap:20px; }
+/* HERO CARD */
+.hero-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--r-lg); padding:28px; backdrop-filter:blur(10px); }
+.hero-card-title { font-family:var(--font-d); font-weight:800; font-size:19px; color:var(--white); margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.stat-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+.stat-box { background:rgba(255,255,255,0.05); border-radius:var(--r); padding:14px; text-align:center; }
+.stat-num { font-family:var(--font-d); font-weight:900; font-size:34px; color:var(--orange); display:block; line-height:1; margin-bottom:4px; }
+.stat-label { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+.guarantee-pill { display:flex; align-items:center; gap:10px; background:rgba(46,125,94,0.15); border:1px solid rgba(46,125,94,0.3); border-radius:var(--r); padding:12px 14px; }
+.gp-icon { width:32px; height:32px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:14px; flex-shrink:0; }
+.gp-text { font-size:13px; font-weight:600; color:var(--white); }
+.gp-sub { font-size:11px; color:var(--muted); }
+.phone-icon { width:38px; height:38px; background:var(--orange); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; animation:ring 3s infinite; flex-shrink:0; }
+@keyframes ring { 0%,100%{transform:rotate(0)} 5%{transform:rotate(-15deg)} 10%{transform:rotate(15deg)} 15%{transform:rotate(-10deg)} 20%{transform:rotate(0)} }
+/* PROBLEM */
+.problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:36px 0; }
+.problem-item { display:flex; align-items:flex-start; gap:14px; background:var(--white); border:1px solid var(--border); border-radius:var(--r-lg); padding:18px; }
+.prob-x { width:26px; height:26px; background:rgba(232,92,26,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--orange); font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.prob-text { font-size:14px; line-height:1.6; }
+.problem-pivot { background:var(--navy); border-radius:var(--r-lg); padding:26px 30px; display:flex; align-items:center; gap:18px; }
+.pivot-icon { font-size:32px; flex-shrink:0; }
+.pivot-text { font-family:var(--font-d); font-weight:800; font-size:21px; color:var(--white); line-height:1.2; }
+.pivot-text span { color:var(--orange); }
+/* SOLUTION */
+.solution-grid { display:grid; grid-template-columns:320px 1fr; gap:60px; align-items:start; }
+.photo-placeholder { width:100%; aspect-ratio:4/5; background:linear-gradient(135deg,var(--navy-light) 0%,var(--navy) 100%); border-radius:var(--r-lg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; border:2px solid rgba(255,255,255,0.08); position:relative; overflow:hidden; }
+.photo-placeholder::before { content:''; position:absolute; bottom:0; left:0; right:0; height:35%; background:linear-gradient(to top,rgba(232,92,26,0.15),transparent); }
+.photo-icon { font-size:60px; opacity:0.35; }
+.photo-label { font-size:13px; color:var(--muted); font-weight:600; }
+.photo-badge { position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); background:var(--orange); color:var(--white); font-family:var(--font-d); font-weight:800; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; padding:9px 20px; border-radius:100px; white-space:nowrap; box-shadow:0 4px 20px rgba(232,92,26,0.4); }
+.founder-quote { font-size:16px; line-height:1.75; color:var(--body-text); margin-bottom:24px; font-style:italic; }
+.founder-name { font-family:var(--font-d); font-weight:800; font-size:20px; color:var(--navy); }
+.founder-title { font-size:13px; color:var(--muted); margin-top:2px; }
+.promises { margin:24px 0; display:flex; flex-direction:column; gap:10px; }
+.promise { display:flex; align-items:center; gap:12px; padding:12px 16px; background:var(--off-white); border-radius:var(--r); border-left:3px solid var(--green); }
+.promise-text { font-weight:600; font-size:14px; color:var(--navy); }
+/* BENEFITS */
+.benefits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px; }
+.benefit-card { background:var(--white); border-radius:var(--r-lg); padding:30px 26px; border:1px solid var(--border); transition:all 0.3s ease; position:relative; overflow:hidden; }
+.benefit-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.benefit-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+.benefit-card:hover::before { transform:scaleX(1); }
+.benefit-icon { width:52px; height:52px; background:rgba(232,92,26,0.1); border-radius:var(--r); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; }
+.benefit-title { font-family:var(--font-d); font-weight:800; font-size:21px; color:var(--navy); margin-bottom:4px; line-height:1.1; }
+.benefit-subtitle { font-size:11px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; }
+.benefit-body { font-size:13px; line-height:1.65; color:var(--body-text); margin-bottom:18px; }
+.benefit-features { display:flex; flex-direction:column; gap:7px; }
+.bf-item { display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--body-text); }
+.bf-check { width:15px; height:15px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:8px; flex-shrink:0; }
+/* TESTIMONIALS */
+.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:44px 0; }
+.testi-card { background:var(--white); border-radius:var(--r-lg); padding:26px; border:1px solid var(--border); display:flex; flex-direction:column; gap:14px; }
+.testi-top { display:flex; align-items:center; gap:12px; }
+.testi-avatar { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-d); font-weight:800; font-size:15px; color:var(--white); flex-shrink:0; }
+.testi-name { font-size:14px; font-weight:700; color:var(--navy); }
+.testi-loc { font-size:12px; color:var(--muted); }
+.testi-stars { color:#FFB800; font-size:13px; letter-spacing:1px; margin-left:auto; }
+.testi-tag { display:inline-block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); background:rgba(46,125,94,0.1); border-radius:4px; padding:3px 8px; }
+.testi-quote { font-size:14px; line-height:1.7; color:var(--body-text); font-style:italic; flex:1; }
+.testi-quote strong { color:var(--navy); font-style:normal; }
+.testi-bottom { background:var(--white); border-radius:var(--r-lg); padding:18px 26px; display:flex; align-items:center; justify-content:space-between; border:1px solid var(--border); flex-wrap:wrap; gap:12px; }
+.google-rating { display:flex; align-items:center; gap:10px; }
+.google-logo { font-family:var(--font-d); font-weight:900; font-size:22px; color:var(--navy); }
+.rating-big { font-family:var(--font-d); font-weight:900; font-size:28px; color:var(--navy); }
+/* STEPS */
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:44px 0; position:relative; }
+.steps-grid::before { content:''; position:absolute; top:35px; left:calc(16.66% + 20px); right:calc(16.66% + 20px); height:2px; background:linear-gradient(to right,var(--orange),var(--green)); z-index:0; }
+.step { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 24px; position:relative; z-index:1; }
+.step-num { width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-d); font-weight:900; font-size:28px; color:var(--white); margin-bottom:22px; flex-shrink:0; }
+.step:nth-child(1) .step-num { background:var(--orange); box-shadow:0 4px 20px rgba(232,92,26,0.4); }
+.step:nth-child(2) .step-num { background:var(--navy); box-shadow:0 4px 20px rgba(26,43,60,0.3); }
+.step:nth-child(3) .step-num { background:var(--green); box-shadow:0 4px 20px rgba(46,125,94,0.4); }
+.step-title { font-family:var(--font-d); font-weight:800; font-size:21px; color:var(--navy); margin-bottom:10px; }
+.step-body { font-size:14px; line-height:1.65; color:var(--body-text); }
+/* COMPARISON */
+.comparison-wrap { background:var(--white); border-radius:var(--r-lg); border:1px solid var(--border); overflow:hidden; margin-top:44px; box-shadow:var(--shadow-md); }
+.comp-header { display:grid; grid-template-columns:1fr 150px 150px; background:var(--navy); padding:18px 26px; gap:16px; }
+.comp-col-title { font-family:var(--font-d); font-weight:800; font-size:15px; text-align:center; }
+.comp-col-title.us { color:var(--orange); }
+.comp-col-title.them { color:var(--muted); }
+.comp-row { display:grid; grid-template-columns:1fr 150px 150px; padding:14px 26px; gap:16px; border-bottom:1px solid var(--border); align-items:center; }
+.comp-row:last-child { border-bottom:none; }
+.comp-row:hover { background:var(--off-white); }
+.comp-feature { font-size:14px; font-weight:600; color:var(--navy); }
+.comp-val { display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; }
+.comp-val.yes { color:var(--green); }
+.comp-val.no { color:var(--orange); opacity:0.5; }
+.comp-val.maybe { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+/* CTA SECTION */
+.cta-section { background:var(--navy); position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:-30%; right:-10%; width:600px; height:600px; background:radial-gradient(circle,rgba(232,92,26,0.15) 0%,transparent 65%); pointer-events:none; }
+.cta-inner { text-align:center; position:relative; z-index:1; }
+.cta-checks { display:flex; justify-content:center; gap:28px; margin:28px 0; flex-wrap:wrap; }
+.cta-check-item { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--muted); }
+
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:40px;padding-top:30px;}
+  .solution-grid{grid-template-columns:1fr;}
+  .benefits-grid{grid-template-columns:1fr 1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .steps-grid::before{display:none;}
+  .steps-grid{grid-template-columns:1fr;gap:28px;}
+  .step{flex-direction:row;text-align:left;align-items:flex-start;}
+  .step-num{margin-bottom:0;margin-right:18px;}
+  .comp-header,.comp-row{grid-template-columns:1fr 90px 90px;}
+}
+@media(max-width:600px){
+  .problem-grid{grid-template-columns:1fr;}
+  .benefits-grid{grid-template-columns:1fr;}
+  .hero-bar-inner{gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-top">🚨 Plumbing emergency? A real person answer right now — <a href="tel:5551234567">(555) 123-4567</a></div>
+  <nav>
+    <div class="nav-main"> 
+      <a href="index.html" class="logo">Flow<span>Pro</span> Plumbing</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:5551234567" class="nav-phone"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span class="phone-text">(555) 123-4567</span></a>
+        <a href="contact.html" class="btn btn-primary" style="font-size:14px;padding:10px 18px;">Book Now</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tel:5551234567" style="color:var(--orange);">📞 (555) 123-4567</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge"><span>🏠 For Homeowners in Springfield</span></div>
+        <h1 class="hero-h1">Stop Living With<br>Plumbing Problems.<br><span class="accent">Fixed Today.</span></h1>
+        <p class="hero-sub">Our Springfield plumbing team arrives within 60 minutes, fixes the problem right the first time, and charges exactly what we quoted. Not a penny more.</p>
+        <div class="hero-btns">
+          <a href="tel:5551234567" class="btn btn-primary">🚨 Get a Plumber in 60 Min</a>
+          <a href="contact.html" class="btn btn-secondary">📅 Schedule a Visit</a>
+        </div>
+        <div class="review-strip">
+          <div class="review-faces">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+            <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+            <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+            <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Customer" class="face" style="width:28px;height:28px;border-radius:50%;border:2px solid var(--navy);object-fit:cover;">
+          </div>
+          <div>
+            <div class="review-text">200+ five-star reviews on Google</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&h=1000&auto=format&fit=crop" alt="Beautifully finished clean bathroom result" class="hero-img">
+      </div>
+    </div>
+  </div>
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="tb-item">⏱️ We Arrive in 60 Minutes</div>
+        <div class="tb-item">💰 Upfront Pricing — No Surprises</div>
+        <div class="tb-item">🔧 Fixed Right the First Time</div>
+        <div class="tb-item">🛡️ 12-Month Warranty on All Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="section">
+  <div class="container" style="text-align: center;">
+    <span class="eyebrow" style="margin-left: auto; margin-right: auto;">Does This Sound Familiar?</span>
+    <h2 class="section-title">Does This Sound Like What<br>You Are Going Through Right Now?</h2>
+    <p class="section-sub" style="margin-left: auto; margin-right: auto;">Plumbing emergency are stressful and finding a plumber you can actually trust make everything ten times more stressful.</p>
+    <div class="problem-grid">
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">You called a plumber and they never showed up — or showed up hours late with no explanation</p></div>
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">You got hit with a massive bill at the end that was nothing like what they quoted you</p></div>
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">The problem came back within weeks because it was not fixed properly the first time</p></div>
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">Water damage getting worse every hour while you wait for someone to answer the phone</p></div>
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">You do not know who to call so you just Google and hope for the best with a stranger</p></div>
+      <div class="problem-item fade-up"><div class="prob-x">✕</div><p class="prob-text">Worried about letting someone into your home without knowing if they are licensed or trustworthy</p></div>
+    </div>
+    <div class="problem-pivot">
+      <div class="pivot-icon">💡</div>
+      <div class="pivot-text">You deserve a plumber who shows up on time, tells you the price upfront, and <span>fixes it properly the first time.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="solution-grid">
+      <div style="position:relative;">
+        <div class="photo-placeholder">
+          <span class="photo-icon">👷</span>
+          <span class="photo-label">Your Founder Photo Here</span>
+        </div>
+        <div class="photo-badge">Master Plumber · 15 Years</div>
+      </div>
+      <div style="padding-top:20px;">
+        <span class="eyebrow">A Better Way</span>
+        <h2 class="section-title">There Is a Better Way to Get Your Plumbing Fixed Without the Stress</h2>
+        <p class="founder-quote">"I understand exactly how frustrating this is. I have been called to fix jobs that other plumbers left half done. I have seen families dealing with burst pipes for days because a plumber never showed up. I have seen people pay twice because the first plumber did not fix it properly.<br><br>That is exactly why I started FlowPro Plumbing. After 15 years fixing plumbing problems for homeowners across Springfield, I built a company around three simple promises."</p>
+        <div class="promises">
+          <div class="promise"><span class="checkmark sm">✓</span><span class="promise-text">We show up on time — 60 minute arrival guaranteed</span></div>
+          <div class="promise"><span class="checkmark sm">✓</span><span class="promise-text">We tell you the exact price before we start anything</span></div>
+          <div class="promise"><span class="checkmark sm">✓</span><span class="promise-text">We fix it properly the first time — or we come back free</span></div>
+        </div>
+        <div class="founder-name">— John Mitchell</div>
+        <div class="founder-title">Master Plumber & Founder, FlowPro Plumbing</div>
+        <p style="margin-top:6px;font-size:13px;color:var(--muted);">500+ Springfield homeowners can confirm we keep those promises every single time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BENEFITS ===== -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">What You Can Expect</span>
+      <h2 class="section-title">Here Is What You Get When You Call Us</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">⏱️</div>
+        <div class="benefit-title">Faster Response</div>
+        <div class="benefit-subtitle">Less Waiting Around</div>
+        <p class="benefit-body">When you have a plumbing problem every minute counts. Water does not wait and neither do we. We guarantee arrival within 60 minutes for every emergency in Springfield.</p>
+        <div class="benefit-features">
+          <div class="bf-item"><span class="checkmark sm">✓</span> 60 minute arrival guarantee</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> 24/7 emergency response</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> Real-time arrival updates</div>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-title">Clear Honest Pricing</div>
+        <div class="benefit-subtitle">No Bill Shock. Ever.</div>
+        <p class="benefit-body">The number one fear with hiring a plumber is getting a bill you did not expect. We give you the exact price before we touch anything. You approve — we start. Simple.</p>
+        <div class="benefit-features">
+          <div class="bf-item"><span class="checkmark sm">✓</span> Written quote before we start</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> Price never changes after quote</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> No hidden call-out fees</div>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🔧</div>
+        <div class="benefit-title">Fixed Right First Time</div>
+        <div class="benefit-subtitle">No Callbacks. No Stress.</div>
+        <p class="benefit-body">Most plumbing problems come back because they were patched, not properly fixed. We diagnose the real problem and fix it completely so it does not come back.</p>
+        <div class="benefit-features">
+          <div class="bf-item"><span class="checkmark sm">✓</span> Full diagnosis every time</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> Quality parts guaranteed</div>
+          <div class="bf-item"><span class="checkmark sm">✓</span> 12 month warranty on all work</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Real Homeowners. Real Results.</span>
+      <h2 class="section-title">What Your Neighbors Are Saying About FlowPro</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-top">
+          <div class="testi-avatar" style="background:#E85C1A;">SK</div>
+          <div><div class="testi-name">Sarah K.</div><div class="testi-loc">Springfield</div></div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+        <span class="testi-tag">✓ Price Transparency</span>
+        <p class="testi-quote">"I was nervous about the cost after a bad experience with another plumber. They quoted me upfront and the final bill was <strong>exactly that. Not a cent more.</strong>"</p>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-top">
+          <div class="testi-avatar" style="background:#1A2B3C;">MT</div>
+          <div><div class="testi-name">Mike T.</div><div class="testi-loc">Springfield</div></div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+        <span class="testi-tag">✓ Emergency Response</span>
+        <p class="testi-quote">"Pipe burst at 11pm on a Sunday. Arrived within <strong>45 minutes</strong>, fixed by midnight, charged exactly what they quoted. Cannot thank them enough."</p>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-top">
+          <div class="testi-avatar" style="background:#2E7D5E;">JR</div>
+          <div><div class="testi-name">James R.</div><div class="testi-loc">Springfield</div></div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+        <span class="testi-tag">✓ Repeat Customer</span>
+        <p class="testi-quote">"I have used FlowPro three times. Every single time they show up when they say, fix it properly, charge exactly what they quoted. <strong>Will never use anyone else.</strong>"</p>
+      </div>
+    </div>
+    <div class="testi-bottom">
+      <div class="google-rating">
+        <div class="google-logo">G</div>
+        <div><div style="color:#FFB800;font-size:15px;letter-spacing:2px;">★★★★★</div><div style="font-size:12px;color:var(--muted);font-weight:600;">200+ Reviews on Google</div></div>
+        <div class="rating-big">5.0</div>
+      </div>
+      <a href="#" class="btn btn-secondary" style="font-size:13px;padding:10px 20px;">Read All Our Reviews →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Simple Process</span>
+      <h2 class="section-title">Getting Your Plumbing Fixed Is Simpler Than You Think</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Call Us or Book Online</div>
+          <p class="step-body">Tell us what is happening. We listen and ask the right questions. That is it from your end — we take it from there.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">We Handle Everything</div>
+          <p class="step-body">We arrive, diagnose, quote, and fix the real problem. You just approve the quote — we do all the rest.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Go Back to Normal</div>
+          <p class="step-body">No more drips. No more floods. No more stress. Just your home back to normal — clean and exactly as we found it.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — (555) 123-4567</a>
+      <a href="contact.html" class="btn btn-secondary">📅 Book Online</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section class="section section-dark">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="section-title light">Why 500+ Homeowners Choose FlowPro</h2>
+    </div>
+    <div class="comparison-wrap">
+      <div class="comp-header">
+        <div></div>
+        <div class="comp-col-title us">FlowPro</div>
+        <div class="comp-col-title them">Others</div>
+      </div>
+      <div class="comp-row"><div class="comp-feature">60 Min Arrival Guarantee</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">Upfront Written Quote Always</div><div class="comp-val yes">✓</div><div class="comp-val maybe">Maybe</div></div>
+      <div class="comp-row"><div class="comp-feature">Price Never Changes After Quote</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">24/7 Emergency Response</div><div class="comp-val yes">✓</div><div class="comp-val maybe">Maybe</div></div>
+      <div class="comp-row"><div class="comp-feature">12 Month Warranty on All Work</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">Real-Time Arrival Updates</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">Background Checked Licensed Team</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">No Hidden Call-Out Fees</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+      <div class="comp-row"><div class="comp-feature">Full Clean Up After Every Job</div><div class="comp-val yes">✓</div><div class="comp-val no">✕</div></div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — (555) 123-4567</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">Questions Homeowners Ask Us</h2>
+    </div>
+    <div style="max-width:760px;margin:44px auto 0;">
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">How quickly can you get to me?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">We guarantee arrival within 60 minutes for emergency jobs in Springfield. For non-emergency work we book a time that suits you and we stick to it. We also send you real-time updates so you are never left wondering.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">How do I know what it will cost before you start?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">We diagnose the problem first then give you an exact written quote before we touch anything. You decide if you want to proceed. The price on that quote is the price on your final bill. Always.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What if the problem comes back?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">Every job comes with a 12 month warranty. If the same problem returns within 12 months we come back and fix it completely free. No questions asked.</div></div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Are your plumbers licensed?</span><span class="faq-arrow">▼</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every plumber on our team is fully licensed and background checked. You can ask to see credentials when we arrive — we will always show you.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow">Ready to Get Help?</span>
+      <h2 class="section-title light" style="font-size:clamp(30px,5vw,50px);">Ready to Get Your Plumbing Fixed<br>By Someone You Can Actually Trust?</h2>
+      <div class="cta-checks">
+        <div class="cta-check-item"><span class="checkmark sm">✓</span> We Arrive in 60 Minutes</div>
+        <div class="cta-check-item"><span class="checkmark sm">✓</span> Upfront Price Before We Start</div>
+        <div class="cta-check-item"><span class="checkmark sm">✓</span> Fixed Right the First Time</div>
+      </div>
+      <div class="cta-btns">
+        <a href="tel:5551234567" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.29-2.29a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Call Now — (555) 123-4567</a>
+        <a href="contact.html" class="btn btn-secondary">📅 Book Online Now</a>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;font-weight:600;color:var(--muted);">
+        <span style="color:#FFB800;letter-spacing:2px;font-size:17px;">★★★★★</span>
+        Rated 5 Stars by 200+ Homeowners in Springfield on Google
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Flow<span>Pro</span> Plumbing</div>
+        <p class="footer-desc">Your trusted local plumber in Springfield. Licensed, committed to fixing it right the first time.</p>
+        <div class="footer-contact">
+          <span>📞 <a href="tel:5551234567">(555) 123-4567</a></span>
+          <span>📍 123 Main Street, Springfield</span>
+          <span>🕐 Available 24/7 for Emergencies</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Emergency Plumbing</a>
+          <a href="services.html">Drain Cleaning</a>
+          <a href="services.html">Leak Detection</a>
+          <a href="services.html">Hot Water Repair</a>
+          <a href="services.html">Pipe Repair</a>
+          <a href="services.html">Gas Fitting</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service Areas</div>
+        <div class="footer-links">
+          <a href="#">Springfield</a>
+          <a href="#">Westfield</a>
+          <a href="#">Northbrook</a>
+          <a href="#">Riverside</a>
+          <a href="#">Lakewood</a>
+          <a href="#">Oak Park</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025 FlowPro Plumbing. All Rights Reserved. · <a href="#" style="color:var(--muted);">Privacy Policy</a> · <a href="#" style="color:var(--muted);">Terms</a></div>
+      <div class="footer-badges"><div class="badge">✓ Licensed</div><div class="badge">✓ 15 Years Experience</div><div class="badge">⭐ 5-Star Rated</div></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
